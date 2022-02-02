@@ -6,8 +6,8 @@
 
         <div class="row">
 
-            <h3> Found {{ movies| count }} matches </h3>
-            <hr>
+            <h3><img src="../static/find.svg" width="70px"> found {{movies| count }} matches </h3>
+            <hr style="color: brown;">
             <ul>
                 {{ macro.displayMovieList(movies)}}
             </ul>

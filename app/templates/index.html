@@ -14,27 +14,28 @@
 {% block content %}
 <div class="container">
     <form>
-        <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
+        <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control" style="width: 18rem; margin-top: 2rem;">
+        <input type="submit"  value="Submit" class="btn btn-default" style="margin-left: 18rem; margin-top: -5.4rem;">
     </form>
 
 </div>
 
 <!-- Popular movie -->
-<h3> Popular Movies</h3>
+<h3 style="margin-left: 52rem;"><img src="../static/undraw_home_cinema_l7yl.svg" width="200px">Popular movies</h3>
 <ul>
     {{ macro.displayMovieList(popular)}}
-</ul>
+</ul> 
 <!-- Upcoming movie  -->
-<h3> Upcoming Movies </h3>
+<h3><img src ="../static/undraw_movie_night_re_9umk.svg" width="400px" style="margin-left: 15rem; margin-top: 4rem;">Upcoming Movies</h3>
+<br><br><br><br><br>
 <ul>
-    {{ macro.displayMovieList(upcoming)}}
+    {{ macro.displayMovieList(upcoming)}} 
+  
 </ul>
 <!-- Now showing movie -->
-<h3>Now Showing</h3>
+<br><br><br><br><br> 
+<h3><img src="../static/undraw_horror_movie_3988.svg" width="300px"  style="margin: 12rem;margin-right: 1rem;">Now Showing</h3>
 <ul>
-    {{ macro.displayMovieList(now_showing)}}
+{{ macro.displayMovieList(now_showing)}}
 </ul>
-
-
 {% endblock%}
