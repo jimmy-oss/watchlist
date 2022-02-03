@@ -1,8 +1,12 @@
 from flask import render_template, request, redirect, url_for
+from ..models import User
+from .forms import RegistrationForm
+from .. import db
 from . import main
 from ..requests import get_movies, get_movie, search_movie
 from .forms import ReviewForm
 from ..models import Review
+from flask_login import login_required
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -55,6 +59,7 @@ def search(movie_name):
 
 
 @main.route('/movie/review/new/<int:id>', methods=['GET', 'POST'])
+@login_required
 def new_review(id):
 
     form = ReviewForm()
@@ -70,3 +75,14 @@ def new_review(id):
 
     title = f'{movie.title} review'
     return render_template('new_review.html', title=title, review_form=form, movie=movie)
+
+@auth.route('/register',methods = ["GET","POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('auth.login'))
+        title = "New Account"
+    return render_template('auth/register.html',registration_form = form)
